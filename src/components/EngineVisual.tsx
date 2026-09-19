@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { cylinderHealth } from '../utils/prediction';
 import type { CylinderHealth } from '../utils/prediction';
 import type { FaultId, Telemetry } from '../types/twin';
+import { Engine3D } from './Engine3D';
 
 interface EngineVisualProps {
   telemetry: Telemetry;
@@ -45,10 +46,12 @@ export function EngineVisual({ telemetry, fault, stage, frozen }: EngineVisualPr
           frozen ? 'opacity-40 grayscale' : ''}`
           }>
           
-          <img
-            src={ENGINE_IMG}
-            alt="X-ray render of the 2.2L inline-4 turbocharged CRDi aero engine"
-            className="absolute inset-0 h-full w-full object-contain" />
+          <Engine3D />
+
+        <img
+          src={ENGINE_IMG}
+          alt="2D fallback render of the 2.2L inline-4 turbocharged CRDi aero engine"
+          className="absolute inset-0 h-full w-full object-contain opacity-0 pointer-events-none" />
           
 
           <svg viewBox="0 0 400 300" className="absolute inset-0 h-full w-full">
